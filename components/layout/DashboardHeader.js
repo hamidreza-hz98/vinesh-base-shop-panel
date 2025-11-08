@@ -14,6 +14,7 @@ import MenuOpenIcon from "@mui/icons-material/MenuOpen";
 import Stack from "@mui/material/Stack";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Link from "next/link";
+import Image from "next/image";
 
 const AppBar = styled(MuiAppBar)(({ theme }) => ({
   borderWidth: 0,
@@ -23,16 +24,6 @@ const AppBar = styled(MuiAppBar)(({ theme }) => ({
   boxShadow: "none",
   zIndex: theme.zIndex.drawer + 1,
 }));
-
-const LogoContainer = styled("div")({
-  position: "relative",
-  height: 40,
-  display: "flex",
-  alignItems: "center",
-  "& img": {
-    maxHeight: 40,
-  },
-});
 
 function DashboardHeader({ logo, title, menuOpen, onToggleMenu }) {
   const theme = useTheme();
@@ -72,7 +63,7 @@ function DashboardHeader({ logo, title, menuOpen, onToggleMenu }) {
 
   return (
     <AppBar color="inherit" position="absolute" sx={{ displayPrint: "none" }}>
-      <Toolbar sx={{ backgroundColor: "inherit", mx: { xs: -0.75, sm: -1 } }}>
+      <Toolbar sx={{ width: "100%", backgroundColor: "inherit" }}>
         <Stack
           direction="row"
           justifyContent="space-between"
@@ -82,37 +73,38 @@ function DashboardHeader({ logo, title, menuOpen, onToggleMenu }) {
             width: "100%",
           }}
         >
-          <Stack direction="row" alignItems="center">
-            <Box sx={{ mr: 1 }}>{getMenuIcon(menuOpen)}</Box>
-            <Link href="/" style={{ textDecoration: "none" }}>
-              <Stack direction="row" alignItems="center">
-                {logo ? <LogoContainer>{logo}</LogoContainer> : null}
-                {title ? (
-                  <Typography
-                    variant="h6"
-                    sx={{
-                      color: (theme.vars ?? theme).palette.primary.main,
-                      fontWeight: "700",
-                      ml: 1,
-                      whiteSpace: "nowrap",
-                      lineHeight: 1,
-                    }}
-                  >
-                    {title}
-                  </Typography>
-                ) : null}
-              </Stack>
-            </Link>
-          </Stack>
-          <Stack
-            direction="row"
-            alignItems="center"
-            spacing={1}
-            sx={{ marginLeft: "auto" }}
-          >
+          <Box sx={{ ml: 1 }}>{getMenuIcon(menuOpen)}</Box>
+
+          <Link href="/dashboard" style={{ textDecoration: "none" }}>
             <Stack direction="row" alignItems="center">
-              <ThemeSwitcher />
+              {logo ? (
+                <Image
+                  src={logo}
+                  alt="Logo"
+                  width={48}
+                  height={48}
+                  style={{ borderRadius: "50%" }}
+                />
+              ) : null}
+              {title ? (
+                <Typography
+                  variant="h6"
+                  sx={{
+                    color: (theme.vars ?? theme).palette.primary.main,
+                    fontWeight: "700",
+                    mr: 1,
+                    whiteSpace: "nowrap",
+                    lineHeight: 1,
+                  }}
+                >
+                  {title}
+                </Typography>
+              ) : null}
             </Stack>
+          </Link>
+
+          <Stack sx={{ mr: 1 }}>
+            <ThemeSwitcher />
           </Stack>
         </Stack>
       </Toolbar>

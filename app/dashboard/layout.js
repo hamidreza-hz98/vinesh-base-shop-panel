@@ -58,7 +58,8 @@ export default function DashboardLayout({ children }) {
       }}
     >
       <DashboardHeader
-        title=""
+        title="ساعت امیران"
+        logo="/images/logo.jpg"
         menuOpen={isNavigationExpanded}
         onToggleMenu={handleToggleHeaderMenu}
       />

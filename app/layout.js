@@ -1,5 +1,8 @@
 import AppThemeProvider from "@/theme/theme-provider";
 import "./globals.css";
+import StoreProvider from "@/store/StoreProvider";
+import NotificationsProvider from "@/hooks/useNotifications/NotificationsProvider";
+import DialogsProvider from "@/hooks/useDialogs/DialogsProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,7 +13,13 @@ export default function RootLayout({ children }) {
   return (
     <html lang="fa" dir="rtl">
       <body style={{ minHeight: "100vh" }}>
-        <AppThemeProvider>{children}</AppThemeProvider>
+        <StoreProvider>
+          <AppThemeProvider>
+            <NotificationsProvider>
+              <DialogsProvider>{children}</DialogsProvider>
+            </NotificationsProvider>
+          </AppThemeProvider>
+        </StoreProvider>
       </body>
     </html>
   );

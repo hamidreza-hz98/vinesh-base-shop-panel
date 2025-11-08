@@ -148,6 +148,7 @@ function DashboardSidebarPageItem({
             >
               <ListItemIcon
                 sx={{
+                  minWidth: "32px",
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: mini ? 'center' : 'auto',

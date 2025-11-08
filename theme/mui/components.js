@@ -60,18 +60,41 @@ export default function getComponents(theme) {
       defaultProps: { variant: "outlined" },
       styleOverrides: {
         root: {
-          "& .MuiInputBase-root": { direction: "rtl" },
+          direction: "rtl", // entire TextField is RTL
+          "& .MuiInputBase-root": {
+            direction: "rtl", // input content RTL
+          },
           "& .MuiInputLabel-root": {
-            right: 0,
-            left: "auto",
-            transformOrigin: "top right",
+            right: 28,
+            left: "auto", // position label to right
+            transformOrigin: "top right", // floating label animation
+          },
+          // Fix the notch/legend for outlined variant
+          "& .MuiOutlinedInput-notchedOutline": {
+            paddingRight: "8px", // adjust if needed
+            paddingLeft: "0px",
           },
         },
       },
     },
 
     MuiInputLabel: {
-      styleOverrides: { root: { textAlign: "right" } },
+      styleOverrides: {
+        root: {
+          textAlign: "right",
+          transformOrigin: "top right",
+        },
+      },
+    },
+
+    MuiOutlinedInput: {
+      styleOverrides: {
+        notchedOutline: {
+          textAlign: "right",
+          paddingRight: "8px", // make the legend appear at right
+          paddingLeft: "0px",
+        },
+      },
     },
 
     MuiFormHelperText: {
@@ -80,15 +103,21 @@ export default function getComponents(theme) {
 
     MuiDialog: {
       defaultProps: { fullWidth: true, maxWidth: "sm" },
-      styleOverrides: { paper: { borderRadius: 12, padding: "8px", textAlign: "right" } },
+      styleOverrides: {
+        paper: { borderRadius: 12, padding: "8px", textAlign: "right" },
+      },
     },
 
     MuiTooltip: {
       defaultProps: { arrow: true, placement: "top" },
-      styleOverrides: { tooltip: { fontSize: "0.85rem", textAlign: "right", direction: "rtl" } },
+      styleOverrides: {
+        tooltip: { fontSize: "0.85rem", textAlign: "right", direction: "rtl" },
+      },
     },
 
-    MuiMenu: { styleOverrides: { paper: { direction: "rtl", textAlign: "right" } } },
+    MuiMenu: {
+      styleOverrides: { paper: { direction: "rtl", textAlign: "right" } },
+    },
 
     MuiListItemText: { styleOverrides: { root: { textAlign: "right" } } },
 
@@ -100,7 +129,12 @@ export default function getComponents(theme) {
       },
     },
 
-    MuiChip: { styleOverrides: { root: { borderRadius: 10 }, label: { paddingLeft: 12, paddingRight: 12 } } },
+    MuiChip: {
+      styleOverrides: {
+        root: { borderRadius: 10 },
+        label: { paddingLeft: 12, paddingRight: 12 },
+      },
+    },
 
     MuiTableCell: {
       styleOverrides: {
@@ -113,9 +147,13 @@ export default function getComponents(theme) {
 
     MuiTabs: { styleOverrides: { root: { direction: "rtl" } } },
 
-    MuiTab: { styleOverrides: { root: { textTransform: "none", fontWeight: 600 } } },
+    MuiTab: {
+      styleOverrides: { root: { textTransform: "none", fontWeight: 600 } },
+    },
 
-    MuiAlert: { styleOverrides: { root: { borderRadius: 10, textAlign: "right" } } },
+    MuiAlert: {
+      styleOverrides: { root: { borderRadius: 10, textAlign: "right" } },
+    },
 
     MuiSnackbarContent: { styleOverrides: { root: { direction: "rtl" } } },
   };
