@@ -34,14 +34,14 @@ function DashboardHeader({ logo, title, menuOpen, onToggleMenu }) {
 
   const getMenuIcon = React.useCallback(
     (isExpanded) => {
-      const expandMenuActionText = "Expand";
-      const collapseMenuActionText = "Collapse";
+      const expandMenuActionText = "باز کردن";
+      const collapseMenuActionText = "بستن";
 
       return (
         <Tooltip
           title={`${
             isExpanded ? collapseMenuActionText : expandMenuActionText
-          } menu`}
+          } منو`}
           enterDelay={1000}
         >
           <div>

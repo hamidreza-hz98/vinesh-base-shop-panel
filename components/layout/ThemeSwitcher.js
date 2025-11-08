@@ -16,12 +16,12 @@ export default function ThemeSwitcher() {
 
   return (
     <Tooltip
-      title={`${themeMode === "dark" ? "Light" : "Dark"} mode`}
+      title={`${themeMode === "dark" ? "روز" : "شب"}`}
       enterDelay={1000}
     >
       <IconButton
         size="small"
-        aria-label={`Switch to ${
+        aria-label={`${
           themeMode === "dark" ? "light" : "dark"
         } mode`}
         onClick={toggleMode}

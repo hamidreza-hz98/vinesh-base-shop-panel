@@ -1,8 +1,6 @@
 import { NextResponse } from "next/server";
 
 export function proxy(req) {
-  console.log("HERE HASTIM");
-  
  const url = req.nextUrl.clone();
    const token = req.cookies.get("token"); // or however you store your JWT/session
  

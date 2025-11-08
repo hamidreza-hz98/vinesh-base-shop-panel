@@ -23,9 +23,14 @@ export default function getComponents(theme) {
         root: {
           borderRadius: shape.borderRadius,
           padding: "8px 14px",
+          marginLeft: "0px !important"
         },
         containedPrimary: { boxShadow: "none" },
         text: { padding: "6px 10px" },
+        startIcon: {
+          marginRight: 0,
+          marginLeft: 8,
+        },
       },
       variants: [
         {
