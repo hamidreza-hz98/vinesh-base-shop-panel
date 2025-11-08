@@ -28,7 +28,6 @@ import { useDialogs } from "@/hooks/useDialogs/useDialogs";
 
 const MediaPageWrapper = ({
   isOnForm = false,
-  type = "all",
   multiple = false,
   onSelect,
 }) => {
@@ -39,7 +38,6 @@ const MediaPageWrapper = ({
   const [drawerMode, setDrawerMode] = React.useState("create");
   const [selectedRow, setSelectedRow] = React.useState(null);
   const [selectedMedia, setSelectedMedia] = React.useState(null);
-  const [tab, setTab] = React.useState(type);
 
   const notifications = useNotifications();
   const dialogs = useDialogs();
@@ -51,7 +49,6 @@ const MediaPageWrapper = ({
   const fetchMedia = React.useCallback(async () => {
     try {
       const query = setRequestQuery({
-        filters: tab !== "all" ? { type: tab } : {},
         page_size: 1000,
       });
 
@@ -62,7 +59,7 @@ const MediaPageWrapper = ({
         autoHideDuration: 3000,
       });
     }
-  }, [dispatch, notifications, tab]);
+  }, [dispatch, notifications]);
 
   React.useEffect(() => {
     fetchMedia();
@@ -185,11 +182,7 @@ const MediaPageWrapper = ({
       }
     >
       <MediaMasonry
-        type={type}
         onSelect={(row) => handleRowEdit(row)}
-        onTabChange={(value) => {
-          setTab(value);
-        }}
         onDelete={handleDeleteMedia}
         multiple={multiple}
         media={media?.items}

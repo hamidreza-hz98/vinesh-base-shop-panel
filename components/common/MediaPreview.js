@@ -5,22 +5,18 @@ import Image from "next/image";
 import { Box, Typography } from "@mui/material";
 import DescriptionOutlinedIcon from "@mui/icons-material/DescriptionOutlined";
 import AudiotrackOutlinedIcon from "@mui/icons-material/AudiotrackOutlined";
-import VideoLibraryOutlinedIcon from "@mui/icons-material/VideoLibraryOutlined";
-import ImageOutlinedIcon from "@mui/icons-material/ImageOutlined";
 import { setFilePath } from "@/lib/media";
 
-const MediaPreview = ({ file, size = 60 }) => {
+const MediaPreview = ({ file, size = 96 }) => {
   if (!file) return null;
 
   
   
   const src = setFilePath(file.path);
   const mime = file.mimeType || "";
-  const ext = file.extension?.toLowerCase() || "";
   const isImage = mime.startsWith("image/");
   const isVideo = mime.startsWith("video/");
   const isAudio = mime.startsWith("audio/");
-  const isOther = !isImage && !isVideo && !isAudio;
   
   const altText =
     file?.translations?.[0]?.title ||
@@ -42,6 +38,8 @@ const MediaPreview = ({ file, size = 60 }) => {
         <Image
           src={src}
           alt={altText}
+          unoptimized
+          crossOrigin="anonymous"
           fill
           style={{ objectFit: "cover" }}
           sizes={`${size}px`}

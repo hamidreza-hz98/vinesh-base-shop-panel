@@ -11,6 +11,7 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import LiveHelpOutlinedIcon from '@mui/icons-material/LiveHelpOutlined';
 import GavelOutlinedIcon from '@mui/icons-material/GavelOutlined';
 import AttachEmailOutlinedIcon from '@mui/icons-material/AttachEmailOutlined';
+import { faIR } from "@mui/x-date-pickers/locales";
 
 export const sidebarRoutes = [
   {
@@ -140,5 +141,177 @@ export const sidebarRoutes = [
     ],
   },
 ];
+
+export const muiLocaleText = {
+  ...faIR.components.MuiLocalizationProvider.defaultProps.localeText,
+ noRowsLabel: 'بدون سطر',
+  noResultsOverlayLabel: 'نتیجه‌ای پیدا نشد.',
+
+  toolbarDensity: 'تراکم',
+  toolbarDensityLabel: 'تراکم',
+  toolbarDensityCompact: 'فشرده',
+  toolbarDensityStandard: 'استاندارد',
+  toolbarDensityComfortable: 'راحت',
+
+  toolbarColumns: 'ستون‌ها',
+  toolbarColumnsLabel: 'ستون‌ها را انتخاب کنید',
+
+  toolbarFilters: 'فیلترها',
+  toolbarFiltersLabel: 'نمایش فیلترها',
+  toolbarFiltersTooltipHide: 'مخفی کردن فیلترها',
+  toolbarFiltersTooltipShow: 'نمایش فیلترها',
+  toolbarFiltersTooltipActive: (count) =>
+    count !== 1 ? `${count} فیلترهای فعال` : `${count} فیلتر فعال`,
+
+  toolbarQuickFilterPlaceholder: 'جستجو...',
+  toolbarQuickFilterLabel: 'جستجو',
+  toolbarQuickFilterDeleteIconLabel: 'حذف',
+
+  toolbarExport: 'خروجی',
+  toolbarExportLabel: 'خروجی',
+  toolbarExportCSV: 'دانلود به صورت CSV',
+  toolbarExportPrint: 'چاپ',
+  toolbarExportExcel: 'دانلود به صورت اکسل',
+
+  columnsManagementSearchTitle: 'جستجو',
+  columnsManagementNoColumns: 'بدون سطر',
+  columnsManagementShowHideAllText: 'نمایش/مخفی کردن همه',
+  columnsManagementReset: 'بازنشانی',
+  columnsManagementDeleteIconLabel: 'پاک کردن',
+
+  filterPanelAddFilter: 'افزودن فیلتر',
+  filterPanelRemoveAll: 'حذف همه',
+  filterPanelDeleteIconLabel: 'حذف',
+  filterPanelLogicOperator: 'عملگر منطقی',
+  filterPanelOperator: 'عملگرها',
+  filterPanelOperatorAnd: 'و',
+  filterPanelOperatorOr: 'یا',
+  filterPanelColumns: 'ستون‌ها',
+  filterPanelInputLabel: 'مقدار',
+  filterPanelInputPlaceholder: 'فیلتر مقدار',
+
+  filterOperatorContains: 'شامل',
+  filterOperatorDoesNotContain: 'شامل نمیشود',
+  filterOperatorEquals: 'مساوی',
+  filterOperatorDoesNotEqual: 'برابر نیست',
+  filterOperatorStartsWith: 'شروع با',
+  filterOperatorEndsWith: 'پایان با',
+  filterOperatorIs: 'هست',
+  filterOperatorNot: 'نیست',
+  filterOperatorAfter: 'بعد از',
+  filterOperatorOnOrAfter: 'معادل یا بعدش',
+  filterOperatorBefore: 'قبلش',
+  filterOperatorOnOrBefore: 'معادل یا قبلش',
+  filterOperatorIsEmpty: 'خالی است',
+  filterOperatorIsNotEmpty: 'خالی نیست',
+  filterOperatorIsAnyOf: 'هر یک از',
+  'filterOperator=': '=',
+  'filterOperator!=': '!=',
+  'filterOperator>': '>',
+  'filterOperator>=': '>=',
+  'filterOperator<': '<',
+  'filterOperator<=': '<=',
+
+  headerFilterOperatorContains: 'شامل',
+  headerFilterOperatorDoesNotContain: 'شامل نمیشود',
+  headerFilterOperatorEquals: 'مساوی',
+  headerFilterOperatorDoesNotEqual: 'برابر نیست',
+  headerFilterOperatorStartsWith: 'شروع با',
+  headerFilterOperatorEndsWith: 'پایان با',
+  headerFilterOperatorIs: 'هست',
+  headerFilterOperatorNot: 'نیست',
+  headerFilterOperatorAfter: 'بعد از',
+  headerFilterOperatorOnOrAfter: 'معادل یا بعد از',
+  headerFilterOperatorBefore: 'قبل از',
+  headerFilterOperatorOnOrBefore: 'معادل یا قبل از',
+  headerFilterOperatorIsEmpty: 'خالی است',
+  headerFilterOperatorIsNotEmpty: 'خالی نیست',
+  headerFilterOperatorIsAnyOf: 'هر یک از',
+  'headerFilterOperator=': 'مساوی',
+  'headerFilterOperator!=': 'نامساوی',
+  'headerFilterOperator>': 'بزرگتر',
+  'headerFilterOperator>=': 'بزرگتر یا مساوی',
+  'headerFilterOperator<': 'کوچکتر',
+  'headerFilterOperator<=': 'کوچکتر یا مساوی',
+
+  filterValueAny: 'هرچیزی',
+  filterValueTrue: 'صحیح',
+  filterValueFalse: 'غلط',
+
+  columnMenuLabel: 'فهرست',
+  columnMenuShowColumns: 'نمایش ستون‌ها',
+  columnMenuManageColumns: 'مدیریت ستون‌ها',
+  columnMenuFilter: 'فیلتر',
+  columnMenuHideColumn: 'مخفی',
+  columnMenuUnsort: 'نامرتب‌کردن',
+  columnMenuSortAsc: 'مرتب‌سازی صعودی',
+  columnMenuSortDesc: 'مرتب‌سازی نزولی',
+
+  columnHeaderFiltersTooltipActive: (count) =>
+    count !== 1 ? `${count} فیلتر‌های فعال` : `${count} فیلتر فعال`,
+  columnHeaderFiltersLabel: 'نمایش فیلترها',
+  columnHeaderSortIconLabel: 'مرتب‌سازی',
+
+  footerRowSelected: (count) =>
+    count !== 1
+      ? `${count.toLocaleString()} سطرهای انتخاب شده`
+      : `${count.toLocaleString()} سطر انتخاب شده`,
+
+  footerTotalRows: 'مجموع سطرها:',
+
+  footerTotalVisibleRows: (visibleCount, totalCount) =>
+    `${visibleCount.toLocaleString()} از ${totalCount.toLocaleString()}`,
+
+  checkboxSelectionHeaderName: 'چک‌باکس انتخاب',
+  checkboxSelectionSelectAllRows: 'انتخاب همه‌ی ردیف‌ها',
+  checkboxSelectionUnselectAllRows: 'لغو انتخاب همه‌ی ردیف‌ها',
+  checkboxSelectionSelectRow: 'انتخاب ردیف',
+  checkboxSelectionUnselectRow: 'لغو انتخاب ردیف',
+
+  booleanCellTrueLabel: 'صحیح',
+  booleanCellFalseLabel: 'غلط',
+
+  actionsCellMore: 'بیشتر',
+
+  pinToLeft: 'سنجاق کردن به چپ',
+  pinToRight: 'سنجاق کردن به راست',
+  unpin: 'برداشتن سنجاق',
+
+  treeDataGroupingHeaderName: 'گروه‌بندی',
+  treeDataExpand: 'نمایش فرزندان',
+  treeDataCollapse: 'پنهان‌سازی فرزندان',
+
+  groupingColumnHeaderName: 'گروه‌بندی',
+  groupColumn: (name) => `گروه‌بندی براساس ${name}`,
+  unGroupColumn: (name) => `لغو گروه‌بندی براساس ${name}`,
+
+  detailPanelToggle: 'پنل جزئیات',
+  expandDetailPanel: 'بازکردن پنل جزئیات',
+  collapseDetailPanel: 'بستن پنل جزئیات',
+
+  paginationRowsPerPage: 'تعداد سطرهای هر صفحه:',
+
+   paginationItemAriaLabel: (type) => {
+    if (type === 'first') {
+      return 'رفتن به اولین صفحه';
+    }
+    if (type === 'last') {
+      return 'رفتن به آخرین صفحه';
+    }
+    if (type === 'next') {
+      return 'رفتن به صفحه‌ی بعدی';
+    }
+    return 'رفتن به صفحه‌ی قبلی';
+  },
+
+  rowReorderingHeaderName: 'ترتیب مجدد سطر',
+
+  aggregationMenuItemHeader: 'تجمیع',
+  aggregationFunctionLabelSum: 'جمع',
+  aggregationFunctionLabelAvg: 'میانگین',
+  aggregationFunctionLabelMin: 'حداقل',
+  aggregationFunctionLabelMax: 'حداکثر',
+  aggregationFunctionLabelSize: 'اندازه',
+};
 
 export default sidebarRoutes;

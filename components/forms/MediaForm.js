@@ -54,7 +54,7 @@ const MediaForm = ({ mode, data, onClose, onSuccess }) => {
     reset(mediaDefaultValues(data));
   }, [mode, data, reset]);
 
-  const onSubmit = async (formData) => {
+  const handleUploadMedia = async (formData) => {
     try {
       setUploadProgress(0);
       const { file, ...rest } = formData;
@@ -71,11 +71,6 @@ const MediaForm = ({ mode, data, onClose, onSuccess }) => {
       Object.entries(rest).forEach(([key, value]) => {
         formDataToSend.append(key, value ?? "");
       });
-
-      const cookies = parseCookies();
-      const _id = cookies._id;
-      formDataToSend.append("uploadedBy", _id);
-      formDataToSend.append("isPublic", "true");
 
       const apiAction =
         mode === "edit"
@@ -99,9 +94,12 @@ const MediaForm = ({ mode, data, onClose, onSuccess }) => {
 
       setTimeout(() => setUploadProgress(0), 800);
 
-      notifications.show(message, { severity: "success" });
+      notifications.show(message, {
+        severity: "success",
+        autoHideDuration: 3000,
+      });
     } catch (error) {
-      notifications.show(error, { severity: "error" });
+      notifications.show(error, { severity: "error", autoHideDuration: 3000 });
       setUploadProgress(0);
     }
   };
@@ -109,7 +107,7 @@ const MediaForm = ({ mode, data, onClose, onSuccess }) => {
   return (
     <Box
       component="form"
-      onSubmit={handleSubmit(onSubmit)}
+      onSubmit={handleSubmit(handleUploadMedia)}
       sx={{ width: "100%", mt: 2 }}
     >
       <Grid container spacing={2}>

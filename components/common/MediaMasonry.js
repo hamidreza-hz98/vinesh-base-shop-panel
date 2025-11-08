@@ -27,35 +27,28 @@ export default function MediaMasonry({
   media,
   onSelect,
   onDelete,
-  type = "all",
-  onTabChange,
   multiple = false,
 }) {
-  const [tab, setTab] = React.useState(type);
   const [selected, setSelected] = React.useState([]);
 
-  const handleTabChange = (event, newValue) => {
-    onTabChange(newValue);
-    setTab(newValue);
-  };
+const isSelected = (item) => selected.some((s) => s._id === item._id);
 
-  const isSelected = (item) =>
-    selected.some((s) => (s.img || s.src) === (item.img || item.src));
+const handleSelectItem = (item) => {
+  setSelected((prev) => {
+    let newSelection;
+    if (isSelected(item)) {
+      // Deselect
+      newSelection = prev.filter((s) => s._id !== item._id);
+    } else {
+      // Select
+      newSelection = multiple ? [...prev, item] : [item];
+    }
 
-  const handleSelectItem = (item) => {
-    setSelected((prev) => {
-      let newSelection;
-      if (isSelected(item)) {
-        newSelection = prev.filter(
-          (s) => (s.img || s.src) !== (item.img || item.src)
-        );
-      } else {
-        newSelection = multiple ? [...prev, item] : [item];
-      }
-      onSelect?.(newSelection);
-      return newSelection;
-    });
-  };
+    onSelect?.(newSelection);
+    return newSelection;
+  });
+};
+
 
   return (
     <Box sx={{ width: "100%", minHeight: 829 }}>
