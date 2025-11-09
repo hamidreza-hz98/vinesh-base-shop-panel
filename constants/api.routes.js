@@ -27,7 +27,6 @@ export const modifyTagApi = (id) =>
 export const getAllTagsApi = (query) =>
   `${process.env.NEXT_PUBLIC_BASE_URL}/tag?${query}`;
 
-
 export const createCategoryApi = `${process.env.NEXT_PUBLIC_BASE_URL}/category`;
 
 export const categoryDetailsApi = (query) =>
@@ -38,3 +37,27 @@ export const modifyCategoryApi = (id) =>
 
 export const getAllCategoriesApi = (query) =>
   `${process.env.NEXT_PUBLIC_BASE_URL}/category?${query}`;
+
+export const createProductApi = `${process.env.NEXT_PUBLIC_BASE_URL}/product`;
+
+export const productDetailsApi = (query) =>
+  `${process.env.NEXT_PUBLIC_BASE_URL}/product/details?${query}`;
+
+export const modifyProductApi = (id) =>
+  `${process.env.NEXT_PUBLIC_BASE_URL}/product/${id}`;
+
+export const getAllProductsApi = (query) =>
+  `${process.env.NEXT_PUBLIC_BASE_URL}/product?${query}`;
+
+
+export const createCustomerApi = `${process.env.NEXT_PUBLIC_BASE_URL}/customer`;
+
+export const modifyCustomerApi = (id) =>
+  `${process.env.NEXT_PUBLIC_BASE_URL}/customer/${id}`;
+
+export const getAllCustomersApi = (query) =>
+  `${process.env.NEXT_PUBLIC_BASE_URL}/customer?${query}`;
+
+
+export const customerDetailsApi = (query) =>
+  `${process.env.NEXT_PUBLIC_BASE_URL}/customer/details?${query}`;

@@ -436,7 +436,7 @@ export default function Overview({
 
       {formMode === "drawer" && FormComponent && (
         <Drawer
-          anchor="right"
+          anchor="left"
           open={drawerOpen}
           onClose={handleDrawerClose}
           ModalProps={{

@@ -41,7 +41,7 @@ export const defaultBrandValues = (data) => ({
   description: data?.description || "",
   tags: data?.tags || [],
   logo: data?.logo || null,
-  seo: {...seoDefaultValues(data)},
+  seo: { ...seoDefaultValues(data) },
 });
 
 export const defaultCategoryValues = (data) => ({
@@ -52,5 +52,33 @@ export const defaultCategoryValues = (data) => ({
   children: data?.children || [],
   tags: data?.tags || [],
   image: data?.image || null,
-  seo: {...seoDefaultValues(data)},
+  seo: { ...seoDefaultValues(data) },
+});
+
+export const defaultProductValues = (data) => ({
+  _id: data?._id || null,
+  title: data?.title || "",
+  slug: data?.slug || "",
+  excerpt: data?.excerpt || "",
+  description: data?.description || "",
+  price: data?.price || null,
+  discount: data?.discount || null,
+  stock: data?.stock || null,
+  categories: data?.categories || [],
+  relatedProducts: data?.relatedProducts || [],
+  brand: data?.brand || {},
+  tags: data?.tags || [],
+  media: data?.media || [],
+  shortSpecifications: data?.shortSpecifications || [],
+  specifications: data?.specifications || [],
+  seo: { ...seoDefaultValues(data) },
+});
+
+export const defaultCustomerValues = (data) => ({
+  _id: data?._id || null,
+  firstName: data?.firstName || "",
+  lastName: data?.lastName || "",
+  phone: data?.phone || "",
+  email: data?.email || "",
+  birthdate: data?.birthdate || "",
 });

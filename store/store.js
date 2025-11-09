@@ -6,6 +6,8 @@ import mediaReducer from "./media/media.slice";
 import brandReducer from "./brand/brand.slice";
 import tagReducer from "./tag/tag.slice";
 import categoryReducer from "./category/category.slice";
+import productReducer from "./product/product.slice";
+import customerReducer from "./customer/customer.slice";
 
 const rootReducer = combineReducers({
   admin: adminReducer,
@@ -13,6 +15,8 @@ const rootReducer = combineReducers({
   brand: brandReducer,
   tag: tagReducer,
   category: categoryReducer,
+  product: productReducer,
+  customer: customerReducer,
 });
 
 const store = configureStore({
