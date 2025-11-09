@@ -398,6 +398,9 @@ export default function Overview({
             localeText={muiLocaleText}
             pageSizeOptions={[5, INITIAL_PAGE_SIZE, 25]}
             sx={{
+              [`& .${gridClasses.overlayWrapper}`]: {
+                position: "unset",
+              },
               [`& .${gridClasses.columnHeader}, & .${gridClasses.cell}`]: {
                 outline: "transparent",
               },

@@ -43,3 +43,14 @@ export const defaultBrandValues = (data) => ({
   logo: data?.logo || null,
   seo: {...seoDefaultValues(data)},
 });
+
+export const defaultCategoryValues = (data) => ({
+  _id: data?._id || null,
+  name: data?.name || "",
+  slug: data?.slug || "",
+  description: data?.description || "",
+  children: data?.children || [],
+  tags: data?.tags || [],
+  image: data?.image || null,
+  seo: {...seoDefaultValues(data)},
+});

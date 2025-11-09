@@ -23,7 +23,7 @@ export default function getComponents(theme) {
         root: {
           borderRadius: shape.borderRadius,
           padding: "8px 14px",
-          marginLeft: "0px !important"
+          marginLeft: "0px !important",
         },
         containedPrimary: { boxShadow: "none" },
         text: { padding: "6px 10px" },
@@ -136,8 +136,11 @@ export default function getComponents(theme) {
 
     MuiChip: {
       styleOverrides: {
-        root: { borderRadius: 10 },
-        label: { paddingLeft: 12, paddingRight: 12 },
+        root: { borderRadius: 10, paddingLeft: 8, paddingRight: 8 },
+        // label: { paddingLeft: 12, paddingRight: 12 },
+        deleteIcon: {
+          marginRight: 0,
+        },
       },
     },
 
@@ -161,5 +164,14 @@ export default function getComponents(theme) {
     },
 
     MuiSnackbarContent: { styleOverrides: { root: { direction: "rtl" } } },
+
+    MuiAutocomplete: {
+      styleOverrides: {
+        endAdornment: {
+          right: "unset !important",
+          left: 8,
+        },
+      },
+    },
   };
 }

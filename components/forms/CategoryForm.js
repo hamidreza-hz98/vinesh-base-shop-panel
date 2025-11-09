@@ -1,7 +1,11 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { defaultCategoryValues } from "@/constants/default-form-values";
+import React, { useEffect } from "react";
+import { Controller, useForm } from "react-hook-form";
+import Loader from "../common/Loader";
 import {
+  Autocomplete,
   Box,
   Button,
   Divider,
@@ -11,17 +15,20 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
-import { parseCookies } from "nookies";
+import RichTextEditor from "../fields/RichTextEditor";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import MediaPreview from "../common/MediaPreview";
-import MediaPageWrapper from "../wrappers/MediaPageWrapper";
-import Loader from "../common/Loader";
-import RichTextEditor from "../fields/RichTextEditor";
-import { defaultBrandValues } from "@/constants/default-form-values";
 import TagField from "../fields/TagField";
+import MediaPageWrapper from "../wrappers/MediaPageWrapper";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllCategories } from "@/store/category/category.action";
+import { selectCategories } from "@/store/category/category.selector";
+import QueryString from "qs";
 
-const BrandForm = ({ data, mode = "create", onSubmit }) => {
+const CategoryForm = ({ data, mode = "create", onSubmit }) => {
+  const dispatch = useDispatch();
+  const { categories } = useSelector(selectCategories);
+
   const [activeField, setActiveField] = React.useState(null);
   const [drawerOpen, setDrawerOpen] = React.useState(false);
   const [drawerType, setDrawerType] = React.useState("image");
@@ -36,18 +43,35 @@ const BrandForm = ({ data, mode = "create", onSubmit }) => {
     setValue,
     formState: { isSubmitting },
   } = useForm({
-    defaultValues: defaultBrandValues(data),
+    defaultValues: defaultCategoryValues(data),
   });
+
+  const initialized = React.useRef(false);
+
+  React.useEffect(() => {
+    dispatch(getAllCategories(QueryString.stringify({ page_size: 5000 })));
+  }, [dispatch]);
+
+  React.useEffect(() => {
+    if (!categories || !data?._id || initialized.current) return;
+    initialized.current = true;
+
+    if (data.categories)
+      setValue(
+        "children",
+        data.categories.map((t) => (t?._id ? t._id : t))
+      );
+  }, [data, categories, setValue]);
 
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setSelectedMediaObjects({
-      logo: data?.logo,
+      image: data?.image,
       "seo.ogImage": data?.seo?.ogImage,
       "seo.twitterImage": data?.seo?.twitterImage,
     });
 
-    reset(defaultBrandValues(data));
+    reset(defaultCategoryValues(data));
   }, [data, reset]);
 
   const handleFormSubmit = async (data) => {
@@ -85,27 +109,16 @@ const BrandForm = ({ data, mode = "create", onSubmit }) => {
         sx={{ width: "100%", mt: 2 }}
       >
         <Grid container spacing={2}>
-          {/* Basic Info */}
           <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
             <Controller
               name="name"
-              control={control}
-              render={({ field }) => (
-                <TextField size="small" {...field} fullWidth label="نام برند" />
-              )}
-            />
-          </Grid>
-
-          <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
-            <Controller
-              name="englishName"
               control={control}
               render={({ field }) => (
                 <TextField
                   size="small"
                   {...field}
                   fullWidth
-                  label="نام انگلیسی برند"
+                  label="نام دسته بندی"
                 />
               )}
             />
@@ -121,6 +134,35 @@ const BrandForm = ({ data, mode = "create", onSubmit }) => {
             />
           </Grid>
 
+          <Grid size={{ xs: 12, sm: 6, md: 4, lg: 3 }}>
+            <Controller
+              name="children"
+              control={control}
+              render={({ field }) => {
+                const selectedCategories = (field.value || []).map((item) =>
+                  categories?.find((c) => c._id === (item?._id || item))
+                );
+                return (
+                  <Autocomplete
+                    multiple
+                    size="small"
+                    fullWidth
+                    options={categories || []}
+                    getOptionLabel={(option) => option.name}
+                    value={selectedCategories}
+                    noOptionsText="دسته بندی ای یافت نشد!"
+                    onChange={(e, newValue) =>
+                      field.onChange(newValue.map((c) => c._id))
+                    }
+                    renderInput={(params) => (
+                      <TextField {...params} label="زیر دسته بندی ها" />
+                    )}
+                  />
+                );
+              }}
+            />
+          </Grid>
+
           <Grid size={{ xs: 12 }}>
             <Controller
               name="description"
@@ -133,27 +175,27 @@ const BrandForm = ({ data, mode = "create", onSubmit }) => {
 
           <Grid size={{ xs: 12, md: 6 }}>
             <Controller
-              name="logo"
+              name="image"
               control={control}
               defaultValue={null}
               render={({ field }) => (
                 <Stack spacing={1}>
-                  <Typography>لوگوی برند</Typography>
+                  <Typography>عکس دسته بندی</Typography>
+
                   <Button
                     variant="contained"
                     startIcon={<CloudUploadIcon />}
-                    onClick={() => openMediaDrawer("logo", "image", false)}
+                    onClick={() => openMediaDrawer("image", "image", false)}
                   >
                     انتخاب
                   </Button>
-                  {selectedMediaObjects.logo && (
-                    <MediaPreview file={selectedMediaObjects.logo} />
+                  {selectedMediaObjects.image && (
+                    <MediaPreview file={selectedMediaObjects.image} />
                   )}
                 </Stack>
               )}
             />
           </Grid>
-
           <Grid size={{ xs: 12, md: 6 }}>
             <Controller
               name="tags"
@@ -371,7 +413,7 @@ const BrandForm = ({ data, mode = "create", onSubmit }) => {
 
           <Grid size={{ xs: 12 }} display="flex" justifyContent="space-between">
             <Button type="submit" variant="contained" disabled={isSubmitting}>
-              {mode === "edit" ? "ویرایش برند" : "ایجاد برند"}
+              {mode === "edit" ? "ویرایش دسته بندی" : "ایجاد دسته بندی"}
             </Button>
           </Grid>
         </Grid>
@@ -400,4 +442,4 @@ const BrandForm = ({ data, mode = "create", onSubmit }) => {
   );
 };
 
-export default BrandForm;
+export default CategoryForm;
