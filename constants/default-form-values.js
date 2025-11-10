@@ -1,4 +1,4 @@
-const seoDefaultValues = (data) => ({
+export const seoDefaultValues = (data) => ({
   title: data?.seo?.title || "",
   description: data?.seo?.description || "",
   keywords: data?.seo?.keywords || "",
@@ -82,3 +82,53 @@ export const defaultCustomerValues = (data) => ({
   email: data?.email || "",
   birthdate: data?.birthdate || "",
 });
+
+export const defaultGeneralSettingsValues = (data) => ({
+  _id: data?._id || null,
+  logo: data?.logo || "",
+  name: data?.name || "",
+  footerText: data?.footerText || "",
+  contactInfo: data?.contactInfo || {
+    mobile: "",
+    phone: "",
+    email: "",
+    address: "",
+    mapIframe: "",
+  },
+  social: data?.social || {
+    instagram: "",
+    telegram: "",
+    whatsapp: "",
+    facebook: "",
+    youtube: "",
+    linkedin: "",
+    x: "",
+  },
+  homepageSlider: data?.homepageSlider || [],
+});
+
+export const seoSettingsDefaultValues = (data) => ({
+  title: data?.title || "",
+  description: data?.description || "",
+  keywords: data?.keywords || "",
+  ogTitle: data?.ogTitle || "",
+  ogDescription: data?.ogDescription || "",
+  ogImage: data?.ogImage || "",
+  twitterTitle: data?.twitterTitle || "",
+  twitterDescription: data?.twitterDescription || "",
+  twitterImage: data?.twitterImage || "",
+  canonical: data?.canonical || "",
+  robots: data?.robots || "",
+  additionalMetaTags: data?.additionalMetaTags || "",
+});
+
+export const aboutSettingsDefaultValues = (data) => ({
+  description: data?.description || "",
+  image: data?.image || "",
+});
+
+export const faqSettingsDefaultValues = (data) =>
+  data || [{ question: "", answer: "" }];
+
+export const termsSettingsDefaultValues = (data) =>
+  data || [{ title: "", description: "" }];

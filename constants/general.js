@@ -118,7 +118,7 @@ export const sidebarRoutes = [
         id: "seo",
         title: "سئو",
         icon: ScreenSearchDesktopOutlinedIcon,
-        href: "/dashboard/settings/seo",
+        href: "/dashboard/settings/default-seo",
       },
       {
         id: "about",

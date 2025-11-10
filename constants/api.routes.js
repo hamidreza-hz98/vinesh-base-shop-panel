@@ -49,7 +49,6 @@ export const modifyProductApi = (id) =>
 export const getAllProductsApi = (query) =>
   `${process.env.NEXT_PUBLIC_BASE_URL}/product?${query}`;
 
-
 export const createCustomerApi = `${process.env.NEXT_PUBLIC_BASE_URL}/customer`;
 
 export const modifyCustomerApi = (id) =>
@@ -58,6 +57,10 @@ export const modifyCustomerApi = (id) =>
 export const getAllCustomersApi = (query) =>
   `${process.env.NEXT_PUBLIC_BASE_URL}/customer?${query}`;
 
-
 export const customerDetailsApi = (query) =>
   `${process.env.NEXT_PUBLIC_BASE_URL}/customer/details?${query}`;
+
+export const getSettingsApi = (section) =>
+  `${process.env.NEXT_PUBLIC_BASE_URL}/settings/${section}`;
+
+export const modifySettingsApi = `${process.env.NEXT_PUBLIC_BASE_URL}/settings`;

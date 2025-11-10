@@ -8,6 +8,7 @@ import tagReducer from "./tag/tag.slice";
 import categoryReducer from "./category/category.slice";
 import productReducer from "./product/product.slice";
 import customerReducer from "./customer/customer.slice";
+import settingsReducer from "./settings/settings.slice";
 
 const rootReducer = combineReducers({
   admin: adminReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   category: categoryReducer,
   product: productReducer,
   customer: customerReducer,
+  settings: settingsReducer,
 });
 
 const store = configureStore({
