@@ -20,7 +20,7 @@ import Drawer from "@mui/material/Drawer";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
-import {  muiLocaleText } from "@/constants/general";
+import { muiLocaleText } from "@/constants/general";
 
 const INITIAL_PAGE_SIZE = 10;
 
@@ -165,6 +165,9 @@ export default function Overview({
 
   const handleRowClick = React.useCallback(
     ({ row }) => {
+      if (rowActions.includes("details")) {
+        return router.push(`${pathname}/${row._id}`);
+      }
       if (formMode === "drawer") {
         setDrawerMode("edit");
         setSelectedRow(row);
@@ -173,7 +176,7 @@ export default function Overview({
         router.push(`${pathname}/${createPath}?id=${row._id}`);
       }
     },
-    [formMode, router, pathname, createPath]
+    [rowActions, formMode, router, pathname, createPath]
   );
 
   const handleCreateClick = React.useCallback(() => {
@@ -189,6 +192,9 @@ export default function Overview({
   // Handle edit
   const handleRowEdit = React.useCallback(
     (row) => () => {
+      if (rowActions.includes("details")) {
+        return router.push(`${pathname}/${row._id}`);
+      }
       if (formMode === "drawer") {
         setDrawerMode("edit");
         setSelectedRow(row);
@@ -197,7 +203,7 @@ export default function Overview({
         router.push(`${pathname}/${createPath}?id=${row._id}`);
       }
     },
-    [formMode, router, pathname, createPath]
+    [rowActions, formMode, router, pathname, createPath]
   );
 
   const handleRowDelete = React.useCallback(

@@ -23,3 +23,11 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+.quill{
+  background-color: lightgray;
+}
+
+.ql-toolbar.ql-snow{
+  border: 1px solid gray !important;
+}

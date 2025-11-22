@@ -132,3 +132,9 @@ export const faqSettingsDefaultValues = (data) =>
 
 export const termsSettingsDefaultValues = (data) =>
   data || [{ title: "", description: "" }];
+
+
+export const defaultOrderValues = (data) => ({
+  status: data?.status || "",
+  shipmentTrackNumber: data?.shipmentTrackNumber || [],
+});

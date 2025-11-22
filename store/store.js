@@ -9,6 +9,7 @@ import categoryReducer from "./category/category.slice";
 import productReducer from "./product/product.slice";
 import customerReducer from "./customer/customer.slice";
 import settingsReducer from "./settings/settings.slice";
+import orderReducer from "./order/order.slice";
 
 const rootReducer = combineReducers({
   admin: adminReducer,
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   product: productReducer,
   customer: customerReducer,
   settings: settingsReducer,
+  order: orderReducer,
 });
 
 const store = configureStore({

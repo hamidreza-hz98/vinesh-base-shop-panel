@@ -31,7 +31,7 @@ const CreateOrUpdateProductPageWrapper = () => {
 
   const handleCreateOrUpdateProduct = async (product) => {
     try {
-      const body = purifyData(product, ["tags", "categories", "brand", "media", "seo.ogImage", "seo.twitterImage"]);
+      const body = purifyData(product, ["tags", "relatedProducts", "categories", "brand", "media", "seo.ogImage", "seo.twitterImage"]);
 
       const message = _id
         ? await dispatch(updateProduct({ _id, body })).unwrap()

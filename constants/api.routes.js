@@ -64,3 +64,8 @@ export const getSettingsApi = (section) =>
   `${process.env.NEXT_PUBLIC_BASE_URL}/settings/${section}`;
 
 export const modifySettingsApi = `${process.env.NEXT_PUBLIC_BASE_URL}/settings`;
+
+export const orderApi = `${process.env.NEXT_PUBLIC_BASE_URL}/order`;
+
+export const modifyOrderApi = (_id) =>
+  `${process.env.NEXT_PUBLIC_BASE_URL}/order/${_id}`;

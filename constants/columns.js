@@ -1,8 +1,9 @@
 import { formatDate, formatDateAndTime } from "@/lib/date";
 import { setFilePath } from "@/lib/media";
-import { formatPrice, toPersian } from "@/lib/number";
-import { Box } from "@mui/material";
+import { calculateFinalPrice, formatPrice, toPersian } from "@/lib/number";
+import { Box, Chip } from "@mui/material";
 import Image from "next/image";
+import { orderStatuses } from "./general";
 
 export const brandColumns = [
   {
@@ -247,5 +248,47 @@ export const customerColumns = [
     headerName: "آخرین تغییر",
     width: 180,
     valueGetter: (updatedAt) => formatDateAndTime(updatedAt) || "",
+  },
+];
+
+export const orderColumns = [
+  { field: "code", headerName: "کد", width: 120 },
+
+  {
+    field: "status",
+    headerName: "وضعیت",
+    width: 200,
+    renderCell: (params) => {
+      const status = params.row.status || "";
+
+      return (
+        <Chip
+          label={orderStatuses[status].name}
+          variant="filled"
+          size="small"
+          sx={{ border: "none" }}
+          color={orderStatuses[status].color}
+          icon={orderStatuses[status].icon}
+        />
+      );
+    },
+  },
+
+  { field: "customer", headerName: "مشتری", width: 150,
+    valueGetter: (customer) => toPersian(customer.phone)
+   },
+
+  {
+    field: "price",
+    headerName: "مبلغ",
+    width: 150,
+    valueGetter: (price) => `${formatPrice(calculateFinalPrice(price))} تومان`,
+  },
+
+  {
+    field: "createdAt",
+    headerName: "تاریخ ثبت",
+    width: 250,
+    valueGetter: (createdAt) => formatDateAndTime(createdAt) || "",
   },
 ];
