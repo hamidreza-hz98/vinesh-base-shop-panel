@@ -274,9 +274,12 @@ export const orderColumns = [
     },
   },
 
-  { field: "customer", headerName: "مشتری", width: 150,
-    valueGetter: (customer) => toPersian(customer.phone)
-   },
+  {
+    field: "customer",
+    headerName: "مشتری",
+    width: 150,
+    valueGetter: (customer) => toPersian(customer.phone),
+  },
 
   {
     field: "price",
@@ -289,6 +292,32 @@ export const orderColumns = [
     field: "createdAt",
     headerName: "تاریخ ثبت",
     width: 250,
+    valueGetter: (createdAt) => formatDateAndTime(createdAt) || "",
+  },
+];
+
+export const contactFormColumns = [
+  {
+    field: "fullName",
+    headerName: "نام",
+    width: 200,
+  },
+  {
+    field: "mobile",
+    headerName: "نام",
+    width: 200,
+
+    valueGetter: (mobile) => toPersian(mobile),
+  },
+  {
+    field: "message",
+    headerName: "پیام",
+    width: 400,
+  },
+  {
+    field: "createdAt",
+    headerName: "تاریخ ارسال",
+    width: 180,
     valueGetter: (createdAt) => formatDateAndTime(createdAt) || "",
   },
 ];

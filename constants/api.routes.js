@@ -69,3 +69,5 @@ export const orderApi = `${process.env.NEXT_PUBLIC_BASE_URL}/order`;
 
 export const modifyOrderApi = (_id) =>
   `${process.env.NEXT_PUBLIC_BASE_URL}/order/${_id}`;
+
+export const contactApi = (query) =>  `${process.env.NEXT_PUBLIC_BASE_URL}/contact?${query}`;

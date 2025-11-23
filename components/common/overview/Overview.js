@@ -165,10 +165,13 @@ export default function Overview({
 
   const handleRowClick = React.useCallback(
     ({ row }) => {
-      if (rowActions.includes("details")) {
+        if (rowActions.includes("details") && formMode === "drawer") {
+        setDrawerMode("edit");
+        setSelectedRow(row);
+        setDrawerOpen(true);
+      } else if (rowActions.includes("details")) {
         return router.push(`${pathname}/${row._id}`);
-      }
-      if (formMode === "drawer") {
+      } else if (formMode === "drawer") {
         setDrawerMode("edit");
         setSelectedRow(row);
         setDrawerOpen(true);
@@ -192,10 +195,13 @@ export default function Overview({
   // Handle edit
   const handleRowEdit = React.useCallback(
     (row) => () => {
-      if (rowActions.includes("details")) {
+      if (rowActions.includes("details") && formMode === "drawer") {
+        setDrawerMode("edit");
+        setSelectedRow(row);
+        setDrawerOpen(true);
+      } else if (rowActions.includes("details")) {
         return router.push(`${pathname}/${row._id}`);
-      }
-      if (formMode === "drawer") {
+      } else if (formMode === "drawer") {
         setDrawerMode("edit");
         setSelectedRow(row);
         setDrawerOpen(true);
@@ -242,7 +248,13 @@ export default function Overview({
 
   const handleRowDetails = React.useCallback(
     (row) => {
-      if (formMode === "drawer") {
+       if (rowActions.includes("details") && formMode === "drawer") {
+        setDrawerMode("edit");
+        setSelectedRow(row);
+        setDrawerOpen(true);
+      } else if (rowActions.includes("details")) {
+        return router.push(`${pathname}/${row._id}`);
+      } else if (formMode === "drawer") {
         setDrawerMode("edit");
         setSelectedRow(row);
         setDrawerOpen(true);
