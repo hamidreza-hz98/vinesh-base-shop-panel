@@ -19,7 +19,7 @@ const paletteDark = {
   success: { main: "#86efac", contrastText: "#0b1220" },
   background: { default: "#0B1220", paper: "#0F1724" },
   text: { primary: "#E6EEF8", secondary: "#B8C6D8", disabled: "#7B8A9A" },
-  divider: "#1F2937",
+  divider: "#9CA3AF50",
 };
 
 export default paletteDark;

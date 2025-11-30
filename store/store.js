@@ -11,6 +11,7 @@ import customerReducer from "./customer/customer.slice";
 import settingsReducer from "./settings/settings.slice";
 import orderReducer from "./order/order.slice";
 import contactReducer from "./contact/contact.slice";
+import dashboardReducer from "./dashboard/dashboard.slice";
 
 const rootReducer = combineReducers({
   admin: adminReducer,
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   settings: settingsReducer,
   order: orderReducer,
   contact: contactReducer,
+  dashboard: dashboardReducer,
 });
 
 const store = configureStore({

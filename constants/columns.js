@@ -193,6 +193,7 @@ export const productColumns = [
     field: "visits",
     headerName: "بازدید ها",
     width: 80,
+    valueGetter: (visits) => formatPrice(visits),
   },
   {
     field: "createdAt",
