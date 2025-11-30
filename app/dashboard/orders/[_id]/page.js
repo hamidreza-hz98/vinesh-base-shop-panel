@@ -1,6 +1,14 @@
 import OrderDetailsPageWrapper from "@/components/wrappers/OrderDetailsPageWrapper";
 import React from "react";
 
+export const metadata = {
+  title: "جزئیات سفارش | فروشگاه اینترنتی امیران واچ",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
+
 const page = async ({ params }) => {
   const { _id } = await params;
 

@@ -1,10 +1,16 @@
-import OrdersPageWrapper from '@/components/wrappers/OrdersPageWrapper'
-import React from 'react'
+import OrdersPageWrapper from "@/components/wrappers/OrdersPageWrapper";
+import React from "react";
+
+export const metadata = {
+  title: "مدیریت سفارش‌ها | فروشگاه اینترنتی امیران واچ",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 const page = () => {
-  return (
-    <OrdersPageWrapper />
-  )
-}
+  return <OrdersPageWrapper />;
+};
 
-export default page
+export default page;
